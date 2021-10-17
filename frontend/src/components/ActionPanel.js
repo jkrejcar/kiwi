@@ -73,7 +73,7 @@ const ActionPanel = (props) => {
               onChange={handleOnChange}
             />
           </Grid>
-          <Grid item xs={12} md={2} sx={{ mt: 1, ml:2, mr:2 }}>
+          <Grid item xs={12} md={2} sx={{ mt: 2, ml:2, mr:2 }}>
             <Button fullWidth disabled={!number} variant="contained" type="submit">
               Generate
             </Button>

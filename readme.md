@@ -16,10 +16,10 @@ yarn
 By default frontend is running on port 3000, backend on port 5000
 
 ## Print Screens
-Mobile Version
 ![Desktop Version](https://www.linkpicture.com/q/kiwi_desktop.png)
 
-Desktop Version
+
+Mobile Version
 ![Mobile Version](https://www.linkpicture.com/q/kiwi_mobile.png)
 
 
