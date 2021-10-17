@@ -19,7 +19,6 @@ By default frontend is running on port 3000, backend on port 5000
 ![Desktop Version](https://www.linkpicture.com/q/kiwi_desktop.png)
 
 
-Mobile Version
 ![Mobile Version](https://www.linkpicture.com/q/kiwi_mobile.png)
 
 
