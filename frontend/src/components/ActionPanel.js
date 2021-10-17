@@ -1,50 +1,96 @@
-import * as React from "react";
-import { experimentalStyled as styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
+import React, { useState } from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Keyboard from "./Keyboard";
 import Switch from "@mui/material/Switch";
-import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
+import Collapse from "@mui/material/Collapse";
 
-const Panel = styled(Paper)`
-  padding: 1em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  max-height: 400px;
-  margin-top: 10px;
-`;
+const ActionPanel = (props) => {
+  const [number, setNumber] = useState("");
 
-export default function ActionPanel(props) {
+  const handleOnChange = (event) => {
+    setNumber(event.target.value);
+  };
+
+  const handleOnSubmit = (evt) => {
+    evt.preventDefault();
+    props.onSubmit(number);
+  };
+
+  const handleKeyboardClick = (label) => {
+    switch (true) {
+      case label === "<-":
+        setNumber(number.slice(0, -1));
+        break;
+      case label === "C":
+        setNumber("");
+        break;
+      default:
+        setNumber(number.concat(label));
+    }
+  };
+
   const handleChangeFilter = (event) => {
-    console.log(event.target.checked);
     props.onFilter(event.target.checked);
   };
 
   const handleChangeKeyboard = (event) => {
-    console.log(event.target.checked);
     props.onKeyboard(event.target.checked);
   };
 
   return (
-    <Panel elevation={3}>
-      <FormControl component="fieldset">
-        <FormGroup aria-label="position" column>
-          <FormControlLabel
-            value="top"
-            control={<Switch onChange={handleChangeFilter} color="primary" />}
-            label="English Words Only"
-            labelPlacement="top"
-          />
-          <FormControlLabel
-            value="top"
-            control={<Switch defaultChecked onChange={handleChangeKeyboard} color="primary" />}
-            label="Keyboard"
-            labelPlacement="top"
-          />
-        </FormGroup>
-      </FormControl>
-    </Panel>
+    <>
+      <form onSubmit={handleOnSubmit}>
+        <Grid container justifyContent="center">
+          <Grid item xs={6} md={3} sx={{ mt: 2, ml:1}}>
+            <FormControlLabel
+              value="top"
+              control={<Switch onChange={handleChangeFilter} color="primary" />}
+              label="Filter Words"
+              labelPlacement="left"
+            />
+          </Grid>
+          <Grid item xs={5} md={3}  sx={{ mt: 2}}>
+            <FormControlLabel
+              value="top"
+              control={
+                <Switch onChange={handleChangeKeyboard} color="primary" />
+              }
+              label="Keyboard"
+              labelPlacement="left"
+            />
+          </Grid>
+          <Grid item xs={12} md={2} sx={{ mt: 1, ml:2, mr:2 }}>
+            <TextField
+              label="Phone Number"
+              name="PhoneNumber"
+              variant="standard"
+              size="small"
+              fullWidth
+              value={number}
+              onChange={handleOnChange}
+            />
+          </Grid>
+          <Grid item xs={12} md={2} sx={{ mt: 1, ml:2, mr:2 }}>
+            <Button fullWidth disabled={!number} variant="contained" type="submit">
+              Generate
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <Collapse sx={{ mt: 2 }} in={props.showKeyboard}>
+              <Grid container justifyContent="center">
+                <Grid item>
+                  <Keyboard onClick={handleKeyboardClick} />
+                </Grid>
+              </Grid>
+            </Collapse>
+          </Grid>
+        </Grid>
+      </form>
+    </>
   );
-}
+};
+
+export default ActionPanel;
