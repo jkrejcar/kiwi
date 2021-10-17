@@ -3,9 +3,7 @@ import { experimentalStyled as styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-const KeyboardBox = styled(Box)`
-
-`;
+const KeyboardBox = styled(Box)``;
 
 const buttonLabels = [
   { number: 1, label: "" },
@@ -26,10 +24,9 @@ export default function Keyboard(props) {
   return (
     <KeyboardBox className="test">
       {buttonLabels.map((numberContent, idx) => (
-        <>
+        <React.Fragment key={idx}>
           <Button
-            key={idx}
-            sx={{ minHeight: "60px", maxWidth: "60px", margin:"2px" }}
+            sx={{ minHeight: "60px", maxWidth: "60px", margin: "2px" }}
             onClick={() => {
               props.onClick(numberContent.number);
             }}
@@ -40,7 +37,7 @@ export default function Keyboard(props) {
             {numberContent.label}
           </Button>
           {(idx + 1) % 3 === 0 ? <br /> : ""}
-        </>
+        </React.Fragment>
       ))}
     </KeyboardBox>
   );

@@ -59,8 +59,6 @@ export default class App extends PureComponent {
     });
   }
 
-  //background-color: ${props => props.theme.palette.secondary};
-
   render() {
     return (
       <Grid sx={{ pt:2}} container justifyContent="center">
@@ -70,7 +68,6 @@ export default class App extends PureComponent {
           maxWidth="md"
           justifyContent="center"
           alignItems="flex-end"
-          xs={12}
         >
           <Backdrop
             sx={{ color: "#fff", zIndex: 999 }}

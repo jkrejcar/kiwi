@@ -43,7 +43,7 @@ const WordsPanel = (props) => {
         </Box>
       )}
       {phoneWords.map((word, idx) => (
-        <Word color="primary" id={idx} label={word} />
+        <Word  id={idx} color="primary" label={word} />
       ))}
     </Panel>
   );

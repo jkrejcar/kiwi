@@ -49,7 +49,7 @@ const ActionPanel = (props) => {
               value="top"
               control={<Switch onChange={handleChangeFilter} color="primary" />}
               label="Filter Words"
-              labelPlacement="left"
+              labelPlacement="end"
             />
           </Grid>
           <Grid item xs={5} md={3}  sx={{ mt: 2}}>
@@ -59,7 +59,7 @@ const ActionPanel = (props) => {
                 <Switch onChange={handleChangeKeyboard} color="primary" />
               }
               label="Keyboard"
-              labelPlacement="left"
+              labelPlacement="end"
             />
           </Grid>
           <Grid item xs={12} md={2} sx={{ mt: 1, ml:2, mr:2 }}>
