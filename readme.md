@@ -1,6 +1,6 @@
 # KIWI PhoneWords Generator
 
-KIWI fullstact phone words generator homework - ReactJS, NodeJS 
+KIWI fullstack phone words generator homework - ReactJS, NodeJS 
 
 ## Usage
 
